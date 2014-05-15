@@ -15,7 +15,11 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
 		});
 	};
 	$scope.addTodo = function (){
-		$scope.todos.$add({text:$scope.formTodoText, done:false});
+        if(!$scope.todoElem){
+            return;
+        }
+        var data = {text:$scope.todoElem, done:false};
+		$scope.todos.$add(data);
 		$scope.formTodoText = "";
 	};
 
@@ -28,3 +32,5 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
     //This will bind the todos with the firebase database
 	$scope.todos = $firebase(ref);
   });
+
+

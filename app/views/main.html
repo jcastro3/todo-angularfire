@@ -3,17 +3,17 @@
       <div class="panel-heading">
         <h3 class="panel-title">Things To-Do: {{getTotalTodos()}}  
         <form class="form-horizontal">
-          <input type="text" style="width:300px; margin-top:10px;" ng-model="formTodoText" ng-model-instant>
-           <button class="btn" style="margin-left:20px;" ng-click="addTodo()"><i class="glyphicon glyphicon-plus"></i> Add</button> 
-           <button class="btn glyphicon glyphicon-search" style="padding:9px;" ></button>
+          <input type="text" style="width:300px; margin-top:10px;" ng-model="todoElem">
+
+           <button class="btn" style="margin-left:20px;" ng-click="addTodo()"><i class="glyphicon glyphicon-plus"></i> Add</button>
         </form></h3>
       </div>
       <div class="panel-body">
         <ul class="list-group">
-          <li class="list-group-item"  style="text-align:left;"ng-repeat="todo in todos | filter:text">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
-          </li> 
+          <li class="list-group-item"  style="text-align:left;" ng-repeat="todo in todos | orderByPriority | filter:todoElem">
+            <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
+            <input class="check" type="checkbox" ng-model="todo.done">
+          </li>
         </ul>
       </div>
     </div>
