@@ -28,7 +28,7 @@
             <ul class="list-group">
               <li class="list-group-item"  style="text-align:left;" ng-repeat="($index, todo) in todos | orderByPriority | filter:txtSearch">
                 <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
-                <input class="check" type="checkbox" ng-model="todo.done" ng-checked="todos.$save($index)">
+                <input class="check" type="checkbox" ng-model="todo.done" ng-switch="todos.$save($index)">
               </li>
             </ul>
           </div>

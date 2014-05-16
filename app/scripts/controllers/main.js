@@ -9,7 +9,7 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
 
 	$scope.removeTodo = function() {
 		angular.forEach($scope.todos.$getIndex(), function (index) {
-			if ($scope.todos[index].done === true) {
+			if($scope.todos[index].done === true) {
 				$scope.todos.$remove(index);
 			}
 		});
@@ -31,9 +31,10 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
     $scope.newTodoProyect = function(proyectName){
         //connect to firebase and create new Repo for new TodoProyect
         //once new repo is created show new list of items on the todolist
-        //
+        url += proyectName;
+        var ref = new Firebase(url);
+        $scope.todos = $firebase(ref);
     };
-
     //This will bind the todos with the firebase database
 	$scope.todos = $firebase(ref);
   });
