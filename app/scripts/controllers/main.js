@@ -14,24 +14,25 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
 			}
 		});
 	};
+
 	$scope.addTodo = function(){
         if(!$scope.todoElem){
             return;
         }
         var data = {text:$scope.todoElem, done:false};
 		$scope.todos.$add(data);
-		$scope.formTodoText = "";
+		$scope.todoElem = "";
 	};
 
 	$scope.getTodo = function(pathurl){
-		
 		$location.path(pathurl);
-		console.log(pathurl);
 	};
 
     $scope.newTodoProyect = function(proyectName){
-
-    }
+        //connect to firebase and create new Repo for new TodoProyect
+        //once new repo is created show new list of items on the todolist
+        //
+    };
 
     //This will bind the todos with the firebase database
 	$scope.todos = $firebase(ref);
