@@ -1,12 +1,12 @@
 
   <div class="panel panel-warning">
       <div class="panel-heading">
-        <h3 class="panel-title">Things To-Do: {{getTotalTodos()}}</h3>
+        <h3 class="panel-title">Title goes here: {{getTotalTodos()}}</h3>
         <form class="form-horizontal">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-12 col-md-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Add New ToDo" ng-model="todoElem">
+                        <input type="text" class="form-control" placeholder="Add new todo to the list" ng-model="todoElem">
                         <div class="input-group-btn">
                             <button type="submit" ng-click="addTodo()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
@@ -23,14 +23,29 @@
             </div>
         </form>
       </div>
-      <div class="panel-body">
-        <ul class="list-group">
-          <li class="list-group-item"  style="text-align:left;" ng-repeat="todo in todos | orderByPriority | filter:txtSearch">
-            <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
-            <input class="check" type="checkbox" ng-model="todo.done">
-          </li>
-        </ul>
+      <div class="row" style="padding:10px">
+          <div class="panel-body col-xs-12 col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item"  style="text-align:left;" ng-repeat="todo in todos | orderByPriority | filter:txtSearch">
+                <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
+                <input class="check" type="checkbox" ng-model="todo.done">
+              </li>
+            </ul>
+          </div>
+          <div class="panel-body col-xs-6 col-md-4">
+              <ul class="list-group">
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Create new proyect" ng-model="proyectName">
+                      <div class="input-group-btn">
+                          <button type="submit" class="btn btn-warning" ng-click="newTodoProyect(proyectName)"><span class="glyphicon glyphicon-plus"></span></button>
+                      </div>
+                  </div>
+                  <li class="list-group-item">ONE PROYECT</li>
+                  <li class="list-group-item">SECOND PROYECT</li>
+                  <li class="list-group-item">THIRD PROYECT</li>
+              </ul>
+          </div>
       </div>
     </div>
      
-    <button class="btn-large" ng-click="removeTodo()"><i class="glyphicon glyphicon-trash"></i> Clear Completed</button>
+    <button class="btn" ng-click="removeTodo()"><i class="glyphicon glyphicon-trash"></i> Clear Completed</button>

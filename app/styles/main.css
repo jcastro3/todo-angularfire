@@ -6,10 +6,7 @@ body {
     padding: 40px 15px;
     text-align: center;
     margin: auto;
-
-
 }
-
 
 .done-true{
     text-decoration: line-through;
@@ -33,12 +30,17 @@ body {
 }
 .check {
     float: right;
-
 }
 
 .TextTodo{
     font:'Lucida Grande';
     font-style:oblique;
     font-size: 16px;
+}
+
+.homeNav{
+    font-family: 'Bree Serif', serif;
+    color: #eeeeff;
+    font-size: 20px;
 }
 
