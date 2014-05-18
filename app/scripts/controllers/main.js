@@ -32,7 +32,11 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
       };
 
     $scope.getTodo = function(pathurl){
-      $location.path(pathurl);
+        $location.path(pathurl);
+    };
+
+    $scope.toggleStatus = function(id){
+        $scope.todos.$save(id);
     };
 
     $scope.newTodoProject = function(projectName){
