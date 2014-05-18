@@ -1,12 +1,14 @@
 'use strict';
 
 mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
-    var url = 'https://resplendent-fire-2473.firebaseio.com/';
-    var ref = new Firebase(url);
-    
-    ref.on('child_added', function(snapshot) {
-        var newList = snapshot.newTodoProyect();
-      });
+    var ref = new Firebase('https://resplendent-fire-2473.firebaseio.com/todos');
+    $scope.projects = [];
+    $scope.projectListView = function() {
+        ref.on('child_added', function (snapshot) {
+            var project = snapshot.name();
+            $scope.projects.push({title:project});
+        });
+    };
 
     $scope.getTotal = function(){
       return $scope.todos.length;
@@ -19,7 +21,7 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
             }
           });
       };
-    
+
     $scope.addTodo = function(){
         if(!$scope.todoElem){
           return;
@@ -33,14 +35,13 @@ mytodo.controller('TodoCtrl', function TodoCtrl($scope, $firebase, $location) {
       $location.path(pathurl);
     };
 
-    $scope.newTodoProyect = function(proyectName){
+    $scope.newTodoProject = function(projectName){
         //once new repo is created show new list of items on the todolist
-        url += proyectName;
-        var ref = new Firebase(url);
-        $scope.todos = $firebase(ref);
-      };
+        var link = new Firebase('https://resplendent-fire-2473.firebaseio.com/todos/' + projectName);
+        $scope.todos = $firebase(link);
+    };
 
-    $scope.selectedProyect = function(selected){
+    $scope.selectProject = function(selected){
 
     };
     //This will bind the todos with the firebase database

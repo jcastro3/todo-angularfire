@@ -6,7 +6,7 @@
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-12 col-md-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Add new todo to the list" ng-model="todoElem">
+                        <input type="text" class="form-control" placeholder="Add new todo element" ng-model="todoElem">
                         <div class="input-group-btn">
                             <button type="submit" ng-click="addTodo()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
@@ -23,24 +23,25 @@
             </div>
         </form>
       </div>
+      <!--TODO instead of having the List of Todos here it will be in a seperate view where after choosing a project or adding  new one it will APPEAR HERE-->
       <div class="row" style="padding:10px">
           <div class="panel-body col-xs-12 col-md-8">
             <ul class="list-group">
-              <li class="list-group-item"  style="text-align:left;" ng-repeat="($index, todo) in todos | orderByPriority | filter:txtSearch">
+              <li class="list-group-item"  style="text-align:left;" ng-repeat="todo in todos | orderByPriority | filter:txtSearch">
                 <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
-                <input class="check" type="checkbox" ng-model="todo.done" ng-switch="todos.$save($index)">
+                <input class="check" type="checkbox" ng-model="todo.done" ng-switch="todos.$save()">
               </li>
             </ul>
           </div>
           <div class="panel-body col-xs-6 col-md-4">
-              <ul class="list-group">
                   <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Create new proyect" ng-model="proyectName">
+                      <input type="text" class="form-control" placeholder="New Todo Proyect" ng-model="projectName">
                       <div class="input-group-btn">
-                          <button type="submit" class="btn btn-warning" ng-click="newTodoProyect(proyectName)"><span class="glyphicon glyphicon-plus"></span></button>
+                          <button type="submit" class="btn btn-warning" ng-click="newTodoProject(projectName)"><span class="glyphicon glyphicon-list-alt"></span></button>
                       </div>
                   </div>
-                  <li class="list-group-item" ng-repeat="">ONE PROYECT</li>
+              <ul class="list-group" ng-init="projectListView()">
+                  <li  class="list-group-item projectList" ng-repeat="project in projects">{{project.title}}</li>
               </ul>
           </div>
       </div>
