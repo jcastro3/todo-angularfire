@@ -1,7 +1,7 @@
 
   <div class="panel panel-warning">
       <div class="panel-heading">
-        <h3 class="panel-title">Title goes here: {{getTotalTodos()}}</h3>
+        <h3 class="panel-title todoTitle" ng-show="title">{{ title}} Todo List</h3>
         <form class="form-horizontal">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-12 col-md-8">
@@ -29,19 +29,20 @@
             <ul class="list-group">
               <li class="list-group-item"  style="text-align:left;" ng-repeat="todo in todos | orderByPriority | filter:txtSearch">
                 <span class="done-{{todo.done}} TextTodo">{{todo.text}}</span>
-                <input class="check" type="checkbox" ng-model="todo.done" ng-checked="toggleStatus()">
+                <input class="check" type="checkbox" ng-model="todo.done" ng-switch="toggleStatus()">
               </li>
             </ul>
           </div>
+          <!--TODO be able to select a project from the list-->
           <div class="panel-body col-xs-6 col-md-4">
                   <div class="input-group">
                       <input type="text" class="form-control" placeholder="New Todo Proyect" ng-model="projectName">
                       <div class="input-group-btn">
-                          <button type="submit" class="btn btn-warning" ng-click="newTodoProject(projectName)"><span class="glyphicon glyphicon-list-alt"></span></button>
+                          <button type="submit" class="btn btn-warning" ng-click="createOrSelectProyect(projectName)"><span class="glyphicon glyphicon-list-alt"></span></button>
                       </div>
                   </div>
               <ul class="list-group" ng-init="projectListView()">
-                  <li  class="list-group-item projectList" ng-repeat="project in projects">{{project.title}}</li>
+                  <li  class="list-group-item projectList "  ng-repeat="project in projects" ng-click="createOrSelectProyect(project.title)">{{project.title}}</li>
               </ul>
           </div>
       </div>

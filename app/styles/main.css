@@ -24,6 +24,13 @@ body {
     font-size:50px;
     margin-bottom: 50px;
 }
+.todoTitle{
+    color: #D3BB93;
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
 
 .todo_about{
     text-align: justify;
@@ -47,6 +54,12 @@ body {
 .projectList{
     color: #ffffff;
     margin-top: 5px;
-    background:cornflowerblue;
+    background:lightsteelblue;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.projectList:hover{
+    background: cadetblue;
 }
 
